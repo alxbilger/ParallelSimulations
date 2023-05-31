@@ -54,9 +54,7 @@ jobs:
                   -GNinja \
                   -DCMAKE_PREFIX_PATH="$SOFA_ROOT/lib/cmake" \
                   -DCMAKE_BUILD_TYPE=Release \
-                  -DCMAKE_INSTALL_PREFIX="$WORKSPACE_INSTALL_PATH" \
-                  ../src \
-              && ninja install"
+                  ../src"
           else
             cd "$WORKSPACE_BUILD_PATH"
             ccache -z
@@ -66,9 +64,7 @@ jobs:
               -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
               -DCMAKE_PREFIX_PATH=$SOFA_ROOT/lib/cmake \
               -DCMAKE_BUILD_TYPE=Release \
-              -DCMAKE_INSTALL_PREFIX="$WORKSPACE_INSTALL_PATH" \
               ../src
-            ninja install
             echo ${CCACHE_BASEDIR}
             ccache -s
           fi
